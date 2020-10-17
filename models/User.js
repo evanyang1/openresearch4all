@@ -1,4 +1,4 @@
-const { model, schema } = require('mongoose')
+const { model, Schema } = require('mongoose')
 
 const UserSchema = new Schema({
     name: { type: String, required: true },
@@ -7,4 +7,6 @@ const UserSchema = new Schema({
     password: { type: String, required: true}
 })
 
-module.exports = mongoose.model('User', UserSchema)
+UserSchema.plugin(require('passport-local-mongoose'))
+
+module.exports = model('User', UserSchema)
